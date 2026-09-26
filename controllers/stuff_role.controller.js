@@ -50,7 +50,7 @@ const getStuffRoles = async (req, res) => {
 const getStuffRoleById = async (req, res) => {
   try {
     const id = Number(req.params.id);
-    const result = await StuffRole.findOne({ id });
+    const result = await StuffRole.findOne({ id }).populate("stuff_id").populate("role_id");
 
     if (!result) {
       return res.status(404).json({

@@ -50,7 +50,7 @@ const getGroupStaffs = async (req, res) => {
 const getGroupStaffById = async (req, res) => {
   try {
     const id = Number(req.params.id);
-    const result = await GroupStaff.findOne({ id });
+    const result = await GroupStaff.findOne({ id }).populate("group_id").populate("stuff_id");
 
     if (!result) {
       return res.status(404).json({

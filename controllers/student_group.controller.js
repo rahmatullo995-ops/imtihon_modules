@@ -31,7 +31,7 @@ const studentGroupRegister = async (req, res) => {
 
 const getStudentGroups = async (req, res) => {
   try {
-    const result = await StudentGroup.find({});
+    const result = await StudentGroup.find({}).populate("student_id").populate("group_id")
 
     return res.status(200).json({
       success: true,

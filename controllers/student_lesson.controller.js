@@ -53,7 +53,7 @@ const getStudentLessons = async (req, res) => {
 const getStudentLessonById = async (req, res) => {
   try {
     const id = Number(req.params.id);
-    const result = await StudentLesson.findOne({ id });
+    const result = await StudentLesson.findOne({ id }).populate("lesson_id").populate("student_id");
 
     if (!result) {
       return res.status(404).json({

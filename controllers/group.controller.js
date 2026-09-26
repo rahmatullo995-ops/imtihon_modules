@@ -39,7 +39,7 @@ const groupRegister = async (req, res) => {
 
 const getGroups = async (req, res) => {
   try {
-    const result = await Group.find({});
+    const result = await Group.find({}).populate("group_stage_id").populate("branch_id");
 
     return res.status(200).json({
       success: true,

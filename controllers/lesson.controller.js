@@ -52,7 +52,7 @@ const getLessons = async (req, res) => {
 const getLessonById = async (req, res) => {
   try {
     const id = Number(req.params.id);
-    const result = await Lesson.findOne({ id });
+    const result = await Lesson.findOne({ id }).populate("group_id");
 
     if (!result) {
       return res.status(404).json({
